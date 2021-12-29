@@ -1,1 +1,22 @@
-<%= link_to ' dang xuat' , destroy_user_session_path, method: :delete%>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Ten</th>
+      <th scope="col">Ngay tao</th>
+      <th scope="col">Xoa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <th scope="row"><%= project.id %></th>
+        <td><%= project.name %></td>
+        <td><%= project.created_at %></td>
+        <td>
+          <%= link_to 'delete', project_path(project.id), method: :delete, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

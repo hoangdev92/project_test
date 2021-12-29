@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    binding.pry
+    @projects = current_user.projects
   end
 end

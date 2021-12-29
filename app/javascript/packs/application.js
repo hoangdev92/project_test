@@ -15,3 +15,14 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+// window.bootstrap = require("bootstrap");
+// import "../stylesheets/application.scss";
+
+require("@popperjs/core")
+
+import "bootstrap"
+import { Tooltip, Popover } from "bootstrap"
+require("../stylesheets/application.scss")
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+global.toastr = require("toastr")
+window.Swal = Swal;

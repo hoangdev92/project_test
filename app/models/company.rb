@@ -1,4 +1,8 @@
 class Company < ApplicationRecord
   has_many :dapartments
-  has_many :users, through: :dapartments, source: :users
+  with_options through: :dapartments do
+    has_many :users, source: :users
+    has_many :groups, source: :groups
+    has_many :projects, source: :projects
+  end
 end
