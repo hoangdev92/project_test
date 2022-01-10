@@ -1,0 +1,28 @@
+<%= link_to 'tao moi', new_department_path, class: 'btn btn-primary' %>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Ten</th>
+      <th scope="col">Xoa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @departments.each do |department| %>
+      <tr>
+        <th scope="row"><%= department.id %></th>
+        <td>
+          <% if policy(department).show? %>
+            <%= link_to department.name, groups_department_path(department.id) %>
+          <% end %>
+        </td>
+        <td>
+          <%if policy(department).destroy? %>
+            <%= link_to 'delete', department_path(department.id), method: :delete, class: 'btn btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

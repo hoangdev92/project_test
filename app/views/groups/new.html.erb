@@ -1,0 +1,16 @@
+<%= form_for @group, url: groups_path(department_id: params[:department_id].present? ? params[:department_id] : ''), 
+    method: :post do |f| %>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <%= f.text_field :name, class: 'form-control', id: "name" %>
+  </div>
+  <div class="mb-3">
+    <label for="manage" class="form-label">phong ban</label>
+    <%= f.select :department_id, options_for_select(@departments), {}, class: 'form-control', id: "manage" %>
+  </div>
+  <div class="mb-3">
+    <label for="learder" class="form-label">learder</label>
+    <%= f.select :learder, options_for_select(@learders), {}, class: 'form-control', id: "learder" %>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>

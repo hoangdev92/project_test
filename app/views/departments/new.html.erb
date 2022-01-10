@@ -1,0 +1,11 @@
+<%= form_for @department, url: departments_path, method: :post do |f| %>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <%= f.text_field :name, class: 'form-control', id: "name" %>
+  </div>
+  <div class="mb-3">
+    <label for="manage" class="form-label">truong phong</label>
+    <%= f.select :manage, options_for_select(@manages), {}, class: 'form-control', id: "manage" %>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>

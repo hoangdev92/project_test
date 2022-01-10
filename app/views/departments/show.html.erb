@@ -1,0 +1,26 @@
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Ten</th>
+      <th scope="col">Xoa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <th scope="row"><%= group.id %></th>
+        <td>
+          <% if policy(group).show? %>
+            <%= link_to group.name, groups_department_path(@department.id) %>
+          <% end %>
+        </td>
+        <td>
+          <%if policy(group).destroy? %>
+            <%= link_to 'delete', group_path(group.id), method: :delete, class: 'btn btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
+  layout 'auth', only: %i[new create]
   # GET /resource/sign_up
   def new
     super
@@ -16,6 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
+    authorize @user
     @user.build_user_info if @user.user_info.blank?
     @user.build_user_profile if @user.user_profile.blank?
     super
@@ -23,6 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
+    authorize @user
     return render :edit, flash: { notice: 'update orror' } unless password_not_error?
     return redirect_to root_path, flash: { notice: 'update success' } if @user.update(user_params)
 

@@ -1,0 +1,30 @@
+<%if policy(@department).groups? %>
+  <%= link_to 'tao moi nhom', new_group_path(department_id: @department.id), class: 'btn btn-primary' %>
+<%end%>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Ten</th>
+      <th scope="col">Xoa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <th scope="row"><%= group.id %></th>
+        <td>
+          <% if policy(group).show? %>
+            <%= link_to group.name, group_path %>
+          <% end %>
+        </td>
+        <td>
+          <%if policy(group).destroy? %>
+            <%= link_to 'delete', group_path(group.id), method: :delete, class: 'btn btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

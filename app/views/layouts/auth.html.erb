@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%# <link href='https://cdn.lineicons.com/1.0.1/LineIcons.min.css' rel='stylesheet'> %>
+        <%= yield :title %>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= javascript_pack_tag 'application' %>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body data-turbolinks="false">
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="d-table">
+                <div class="d-tablecell">
+                    <span class="loader">
+                        <span class="loader-inner"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- End Preloader -->
+        <!-- Skip Main layout, sidebar, header on authentication -->
+        <%= toastr_flash %>
+        <%= yield %>
+    </body>
+</html>
